@@ -1,0 +1,19 @@
+name: smart-email-backend
+services:
+  - name: smart-email-backend
+    project: .
+    language: python
+    host: appservice
+    runtime: python|3.9
+    env:
+      - name: WEBSITES_PORT
+        value: "8000"
+      - name: SCM_DO_BUILD_DURING_DEPLOYMENT
+        value: "true"
+      - name: WEBSITE_RUN_FROM_PACKAGE
+        value: "1"
+      - name: PYTHON_ENABLE_GUNICORN
+        value: "true"
+      - name: PYTHONPATH
+        value: "/home/site/wwwroot"
+    startup_command: /home/site/wwwroot/deploy.sh 
